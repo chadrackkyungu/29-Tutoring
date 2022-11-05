@@ -12,8 +12,8 @@ const usePost = () => {
         });
 
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token}`);
         myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", `Bearer ${token}`);
 
         const requestOptions = {
             method: Method,

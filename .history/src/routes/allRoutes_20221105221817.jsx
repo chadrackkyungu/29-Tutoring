@@ -1,13 +1,12 @@
 import React from "react"
 import { Redirect } from "react-router-dom"
-import { LoginRoute, ForgotPasswordRoute, ResetPasswordRoute, RegisterRoute, VerifyEmailRoute, Dashboard, LogoutRoute } from "../components/RouteName"
+import { LoginRoute, ForgotPasswordRoute, ResetPasswordRoute, RegisterRoute, VerifyEmailRoute, Dashboard } from "../components/RouteName"
 
 import Login from "../pages/Authentication/Login"
 import Register from "../pages/Authentication/Register"
 import ForgetPwd from "../pages/Authentication/ForgetPassword"
 import ResetPassword from "../pages/Authentication/ResetPassword"
 import VerifiedEmail from "../pages/Authentication/VerifiedEmail"
-import Logout from "../pages/Authentication/Logout"
 
 import Layout from '../pages/Layout';
 import UserProfile from "../pages/Account/Index"
@@ -30,7 +29,6 @@ const authRoutes = [
   { path: RegisterRoute, exact: true, component: Register },
   { path: ResetPasswordRoute, exact: true, component: ResetPassword },
   { path: VerifyEmailRoute, exact: true, component: VerifiedEmail },
-  { path: LogoutRoute, exact: true, component: Logout },
 ]
 
 export { userRoutes, authRoutes }

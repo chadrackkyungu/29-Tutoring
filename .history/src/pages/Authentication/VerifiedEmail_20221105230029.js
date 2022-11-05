@@ -49,10 +49,13 @@ const VerifiedEmail = () => {
     return (
         <React.Fragment>
             <MetaTagComp title_sco={VerifyEmailPage} />
+
             <Row>
                 <LoginRightLabel text="Verify your email" />
+
                 <FromWraper>
                     <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
+
                         <p className="text-dark mt-5 mb-4 m-5 text-center"> Click on the button below to verify your email </p>
                         <div className=" text-center p-3">
                             <CustomBtn Pending={pending} btnName="Verify your email" />

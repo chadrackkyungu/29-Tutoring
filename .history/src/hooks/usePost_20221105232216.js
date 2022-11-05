@@ -5,6 +5,7 @@ const usePost = () => {
     const [postData, updatePostData] = useState({ pending: false, data: undefined, error: undefined });
 
     const execute = async (endPoint, raw, Method, displayMessage, token) => {
+
         updatePostData({
             pending: true,
             data: undefined,
@@ -25,7 +26,6 @@ const usePost = () => {
         return fetch(`${process.env.REACT_APP_BACKEND_URL}/${endPoint}`, requestOptions)
             .then(response => response.json())
             .then(res => {
-                console.log(res)
                 if (res?.status === 'success') {
                     updatePostData({
                         pending: false,

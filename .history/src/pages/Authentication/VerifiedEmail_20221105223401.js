@@ -9,8 +9,6 @@ import MetaTagComp from 'components/MetaTag';
 import { VerifyEmailPage } from 'components/SCO_Name';
 import CustomBtn from 'components/CustomBtn';
 import usePost from 'hooks/usePost';
-import LoginRightLabel from './components/LoginRightLabel';
-import FromWraper from './components/FromWraper';
 
 const VerifiedEmail = () => {
 
@@ -49,16 +47,23 @@ const VerifiedEmail = () => {
     return (
         <React.Fragment>
             <MetaTagComp title_sco={VerifyEmailPage} />
+
             <Row>
-                <LoginRightLabel text="Verify your email" />
-                <FromWraper>
+                <Col md={6} className="registration-img">
+                    <div> <h1 className="mt-4 mb-4 login-title">Verify your email</h1> </div>
+                </Col>
+
+                <Col md={6} className="d-flex justify-content-center align-items-center">
                     <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
-                        <p className="text-dark mt-5 mb-4 m-5 text-center"> Click on the button below to verify your email </p>
-                        <div className=" text-center p-3">
-                            <CustomBtn Pending={pending} btnName="Verify your email" />
-                        </div>
+                        <Card className="overflow-hidden p-2">
+                            <p className="text-dark mt-5 mb-4 m-5 text-center"> Click on the button below to verify your email </p>
+                            <div className=" text-center p-3">
+                                <CustomBtn Pending={pending} btnName="Verify your email" />
+                            </div>
+                        </Card>
                     </AvForm>
-                </FromWraper>
+                </Col>
+
             </Row>
         </React.Fragment>
     )

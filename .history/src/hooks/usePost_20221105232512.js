@@ -5,6 +5,8 @@ const usePost = () => {
     const [postData, updatePostData] = useState({ pending: false, data: undefined, error: undefined });
 
     const execute = async (endPoint, raw, Method, displayMessage, token) => {
+        console.log(token)
+
         updatePostData({
             pending: true,
             data: undefined,
@@ -12,8 +14,8 @@ const usePost = () => {
         });
 
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token}`);
         myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Authorization", `Bearer ${token}`);
 
         const requestOptions = {
             method: Method,

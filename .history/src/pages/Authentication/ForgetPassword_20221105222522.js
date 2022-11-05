@@ -5,6 +5,7 @@ import usePost from 'hooks/usePost';
 import { ForgotPasswordMsg } from 'components/NotifyMessage';
 import MetaTagComp from "components/MetaTag";
 import CustomBtn from "components/CustomBtn";
+import { ForgotPage } from "components/SCO_Name";
 
 const ForgetPasswordPage = () => {
 
@@ -21,7 +22,7 @@ const ForgetPasswordPage = () => {
 
   return (
     <React.Fragment>
-      <MetaTagComp title_sco="Tutoring | Forgot password" />
+      <MetaTagComp title_sco={ForgotPage} />
 
       <Row>
         <Col md={6} className="registration-img">
