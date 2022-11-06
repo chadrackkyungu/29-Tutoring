@@ -13,8 +13,13 @@ const BookMark = () => {
     const user = useStore1Selector(userDetails);
     const user_Id = user?.data?.data?._id;
     const token = user?.token;
-    const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/bookmarks/${user_Id}/userId`, token);
+    const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/bookmarks/${'6365804ff0b8b1e683f5c7bf'}/userId`, token);
 
+    console.log('====================================');
+    console.log(data);
+    console.log(user_Id);
+    console.log(`${process.env.REACT_APP_BACKEND_URL}/bookmarks/${user_Id}/userId`);
+    console.log('====================================');
     if (loading) return <Layout> <Loading /> </Layout>
 
     return (

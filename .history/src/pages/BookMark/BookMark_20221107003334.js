@@ -17,6 +17,12 @@ const BookMark = () => {
 
     if (loading) return <Layout> <Loading /> </Layout>
 
+    // const res = data?.filter(course => {
+    //     return course?.courseId;
+    // })
+    // console.log('====================================');
+    // console.log(res);
+    // console.log('====================================');
     return (
         <Layout>
             <React.Fragment>

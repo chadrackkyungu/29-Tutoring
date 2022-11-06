@@ -11,9 +11,11 @@ import { useStore1Selector } from "index";
 
 const BookMark = () => {
     const user = useStore1Selector(userDetails);
-    const user_Id = user?.data?.data?._id;
-    const token = user?.token;
-    const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/bookmarks/${user_Id}/userId`, token);
+    const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/bookmarks`, null);
+    const userId = user?.data?.data?._id;
+
+
+    console.log(data);
 
     if (loading) return <Layout> <Loading /> </Layout>
 

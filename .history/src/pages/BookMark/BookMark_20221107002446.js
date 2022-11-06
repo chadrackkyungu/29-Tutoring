@@ -17,6 +17,9 @@ const BookMark = () => {
 
     if (loading) return <Layout> <Loading /> </Layout>
 
+    const res = data?.filter(course => {
+        console.log(course?.courseId)
+    })
     return (
         <Layout>
             <React.Fragment>

@@ -17,6 +17,10 @@ const BookMark = () => {
 
     if (loading) return <Layout> <Loading /> </Layout>
 
+    console.log('====================================');
+    console.log(data?.courseId);
+    console.log('====================================');
+
     return (
         <Layout>
             <React.Fragment>

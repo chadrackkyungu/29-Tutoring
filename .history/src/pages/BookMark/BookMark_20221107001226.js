@@ -15,6 +15,9 @@ const BookMark = () => {
     const token = user?.token;
     const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/bookmarks/${user_Id}/userId`, token);
 
+    console.log('====================================');
+    console.log(data);
+    console.log('====================================');
     if (loading) return <Layout> <Loading /> </Layout>
 
     return (

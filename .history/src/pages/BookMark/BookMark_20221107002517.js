@@ -17,6 +17,12 @@ const BookMark = () => {
 
     if (loading) return <Layout> <Loading /> </Layout>
 
+    const res = data?.filter(course => {
+        return course?.courseId
+    })
+    console.log('====================================');
+    console.log(res);
+    console.log('====================================');
     return (
         <Layout>
             <React.Fragment>
@@ -24,7 +30,7 @@ const BookMark = () => {
                     <MetaTagComp title_sco={MyCourses} />
 
                     <Container fluid>
-                        <MyCourse data={data} loading={loading} />
+                        <MyCourse data={res} loading={loading} />
                     </Container>
                 </div>
             </React.Fragment>

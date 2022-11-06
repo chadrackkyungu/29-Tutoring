@@ -13,7 +13,7 @@ function MyCourses({ data }) {
         <div>
             <CardBody>
                 {
-                    data.length <= 0 ? <Empty empty="Your book  mark is empty" /> :
+                    data.length <= 0 ? <Empty /> :
                         <Row>
                             {
                                 data?.map((course, i) => {

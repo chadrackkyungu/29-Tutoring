@@ -8,14 +8,20 @@ import useFetch from "../../hooks/useFecth";
 import Loading from "components/Loading";
 import { userDetails } from "Redux/Slices/userSlice";
 import { useStore1Selector } from "index";
+import usePost from "hooks/usePost";
 
 const BookMark = () => {
     const user = useStore1Selector(userDetails);
     const user_Id = user?.data?.data?._id;
     const token = user?.token;
-    const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/bookmarks/${user_Id}/userId`, token);
+    const { execute, pending, data } = usePost()
+    const Method = 'GET', endPoint = 'bookmarks';
 
-    if (loading) return <Layout> <Loading /> </Layout>
+    useEffect(() => {
+        const raw = JSON.stringify({ "userId": user_Id });
+        execute(endPoint, raw, Method, LoginMsg, token)
+    }, []);
+
 
     return (
         <Layout>
