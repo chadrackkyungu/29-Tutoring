@@ -8,8 +8,6 @@ import CustomBtn from "components/CustomBtn";
 import { ForgotPage } from "components/SCO_Name";
 import LoginRightLabel from "./components/LoginRightLabel";
 import FromWraper from "./components/FromWraper";
-import { Link } from "react-router-dom";
-import { ForgotPasswordRoute } from "components/RouteName";
 
 const ForgetPasswordPage = () => {
   const { execute, pending, data } = usePost()
@@ -29,25 +27,17 @@ const ForgetPasswordPage = () => {
 
       <Row>
         <LoginRightLabel text="Forgot password" />
-        {
-          data?.status === 'success' ? <FromWraper>
-            <h5 className="text-primary">We sent you the link to reset your password via your email </h5>
-            <div className="col-12 mt-5">
-              If you did not receive it ? <Link to={ForgotPasswordRoute} className='text-primary'> Try again </Link>
+        <FromWraper>
+          <AvForm className="form-horizontal mt-4" onValidSubmit={(e, v) => handleValidSubmit(e, v)}>
+            <div className="mb-3">
+              <AvField name="email" label="Email" className="form-control" placeholder="Enter email"
+                type="email"
+                required
+              />
             </div>
-          </FromWraper> :
-            <FromWraper>
-              <AvForm className="form-horizontal mt-4" onValidSubmit={(e, v) => handleValidSubmit(e, v)}>
-                <div className="mb-3">
-                  <AvField name="email" label="Email" className="form-control" placeholder="Enter email"
-                    type="email"
-                    required
-                  />
-                </div>
-                <CustomBtn Pending={pending} btnName="Submit" />
-              </AvForm>
-            </FromWraper>
-        }
+            <CustomBtn Pending={pending} btnName="Submit" />
+          </AvForm>
+        </FromWraper>
       </Row>
     </React.Fragment>
   )

@@ -8,8 +8,6 @@ import CustomBtn from "components/CustomBtn";
 import { ForgotPage } from "components/SCO_Name";
 import LoginRightLabel from "./components/LoginRightLabel";
 import FromWraper from "./components/FromWraper";
-import { Link } from "react-router-dom";
-import { ForgotPasswordRoute } from "components/RouteName";
 
 const ForgetPasswordPage = () => {
   const { execute, pending, data } = usePost()
@@ -30,10 +28,10 @@ const ForgetPasswordPage = () => {
       <Row>
         <LoginRightLabel text="Forgot password" />
         {
-          data?.status === 'success' ? <FromWraper>
-            <h5 className="text-primary">We sent you the link to reset your password via your email </h5>
+          data.status === 'success' ? <FromWraper>
+            <h5 className="text-primary">Thank you 🙏, for registering with us 🤝 </h5>
             <div className="col-12 mt-5">
-              If you did not receive it ? <Link to={ForgotPasswordRoute} className='text-primary'> Try again </Link>
+              Go to <Link to={LoginRoute} className='text-primary'> Login </Link>
             </div>
           </FromWraper> :
             <FromWraper>

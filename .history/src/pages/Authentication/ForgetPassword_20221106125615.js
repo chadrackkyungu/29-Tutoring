@@ -33,7 +33,7 @@ const ForgetPasswordPage = () => {
           data?.status === 'success' ? <FromWraper>
             <h5 className="text-primary">We sent you the link to reset your password via your email </h5>
             <div className="col-12 mt-5">
-              If you did not receive it ? <Link to={ForgotPasswordRoute} className='text-primary'> Try again </Link>
+              You did not receive it ? <Link to={ForgotPasswordRoute} className='text-primary'> Try again </Link>
             </div>
           </FromWraper> :
             <FromWraper>
