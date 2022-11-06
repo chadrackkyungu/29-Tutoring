@@ -1,7 +1,7 @@
 import React from "react"
 import "../Styles.scss";
 import { Row } from "reactstrap"
-import { Link, useParams } from "react-router-dom"
+import { Link, useHistory, useParams } from "react-router-dom"
 import MetaTagComp from 'components/MetaTag';
 import { VerifyEmailPage } from 'components/SCO_Name';
 import CustomBtn from 'components/CustomBtn';

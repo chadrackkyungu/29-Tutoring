@@ -1,7 +1,7 @@
 import React from "react"
 import "../Styles.scss";
 import { Row } from "reactstrap"
-import { Link, useParams } from "react-router-dom"
+import { useHistory, useParams } from "react-router-dom"
 import MetaTagComp from 'components/MetaTag';
 import { VerifyEmailPage } from 'components/SCO_Name';
 import CustomBtn from 'components/CustomBtn';
@@ -9,7 +9,6 @@ import usePost from 'hooks/usePost';
 import LoginRightLabel from './components/LoginRightLabel';
 import FromWraper from './components/FromWraper';
 import { verifyMsg } from 'components/NotifyMessage';
-import { LoginRoute } from "components/RouteName";
 
 const VerifiedEmail = () => {
 
@@ -17,8 +16,8 @@ const VerifiedEmail = () => {
     const { execute, pending, data } = usePost()
 
     const verifyFunc = () => {
-        const Method = 'POST', endPoint = `users/verify/${userId}/${token}`;
-        const raw = "";
+        const Method = 'GET', endPoint = `users/verify/${userId}/${token}`;
+        const raw = ""
         execute(endPoint, raw, Method, verifyMsg)
     }
 
@@ -30,10 +29,7 @@ const VerifiedEmail = () => {
                 {
                     data?.status === 'success' ?
                         <FromWraper>
-                            <h5 className="text-primary">Thank you 🙏, for registering with us 🤝 </h5>
-                            <div className="col-12 mt-5">
-                                Go to <Link to={LoginRoute} className='text-primary'> Login </Link>
-                            </div>
+                            <p className="text-primary">Thank you 🙏, you have complete your registration</p>
                         </FromWraper> :
                         <FromWraper>
                             <p className="text-dark mt-5 mb-4 m-5 text-center"> Click on the button below to verify your email </p>

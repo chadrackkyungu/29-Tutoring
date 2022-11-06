@@ -1,7 +1,7 @@
 import React from "react"
 import "../Styles.scss";
 import { Row } from "reactstrap"
-import { Link, useParams } from "react-router-dom"
+import { Link, useHistory, useParams } from "react-router-dom"
 import MetaTagComp from 'components/MetaTag';
 import { VerifyEmailPage } from 'components/SCO_Name';
 import CustomBtn from 'components/CustomBtn';
@@ -30,7 +30,7 @@ const VerifiedEmail = () => {
                 {
                     data?.status === 'success' ?
                         <FromWraper>
-                            <h5 className="text-primary">Thank you 🙏, for registering with us 🤝 </h5>
+                            <p className="text-primary">Thank you 🙏, you have complete your registration</p>
                             <div className="col-12 mt-5">
                                 Go to <Link to={LoginRoute} className='text-primary'> Login </Link>
                             </div>

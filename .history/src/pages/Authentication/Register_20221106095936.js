@@ -41,10 +41,10 @@ const Register = () => {
       <Row>
         <LoginRightLabel text="Register" />
         {
-          data?.status === 'success' ?
+          data.status === 'success' ?
             (<FromWraper>
               <p className="text-primary">  We sent you a link to your mailbox, verify your email to continue </p>
-              You did not received it ? <Link onClick={() => location.reload()} className='text-primary'> Try again </Link>
+              You did not received it ? <Link to="/register" className='text-primary'> Try again </Link>
             </FromWraper>)
             :
             (<FromWraper>
