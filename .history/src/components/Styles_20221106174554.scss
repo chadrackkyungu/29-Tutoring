@@ -1,0 +1,28 @@
+#page-topbar {
+    // border: 5px solid red;
+}
+
+.navbar-header {
+    order: 5px solid rgb(90, 30, 228);
+}
+
+.logo {
+    width: 40% !important;
+}
+
+.logo img {
+    width: 100% !important;
+}
+
+.sidebar-img-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3.5em;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar-img-container img {
+    width: 40%
+}
