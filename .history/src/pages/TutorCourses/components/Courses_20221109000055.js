@@ -34,7 +34,7 @@ function MyCourses({ myBookMarkCourses, reFetch }) {
     return (
         <div>
             <CardBody>
-                <button className='btn btn-success mb-3' onClick={() => setOpenModal(true)} >+Add a new course</button>
+                <button className='btn btn-success' onClick={() => setOpenModal(true)} >+Add new course</button>
                 {
                     myBookMarkCourses.length <= 0 ? <Empty empty="Your book  mark is empty" /> :
                         <Row>
@@ -59,7 +59,7 @@ function MyCourses({ myBookMarkCourses, reFetch }) {
                                                     </div>
                                                     <div className="d-flex justify-content-between ">
                                                         <Link to={`/course-details/${course?._id}`}><GrView />View details <BsArrowRight /> </Link>
-                                                        <div className='remove-bookmark' onClick={() => removeBookmark(course?._id)}>
+                                                        <div className='remove-bookmark' onClick={() => removeBookmark(course?.id)}>
                                                             <BsBookmarkX size={18} />Remove
                                                         </div>
                                                     </div>
@@ -80,7 +80,7 @@ function MyCourses({ myBookMarkCourses, reFetch }) {
                 ModalTitle="Add a new course"
                 cancel="cancel"
                 // This is the component name
-                CourseForm={<CourseForm reFetch={reFetch} onClose={() => setOpenModal(false)} />}
+                CourseForm={CourseForm}
             />
 
         </div>

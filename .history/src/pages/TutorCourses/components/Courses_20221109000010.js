@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import Empty from 'components/Empty';
 import { GrView } from 'react-icons/gr';
 import { BsArrowRight, BsBookmarkX } from 'react-icons/bs';
-import { DeleteCourseMsg } from 'components/NotifyMessage';
+import { RemoveBookMarkMsg } from 'components/NotifyMessage';
 import { useStore1Selector } from 'index';
 import { userDetails } from 'Redux/Slices/userSlice';
 import usePost from 'hooks/usePost';
@@ -23,7 +23,7 @@ function MyCourses({ myBookMarkCourses, reFetch }) {
     function removeBookmark(id) {
         const Method = 'DELETE', endPoint = `courses/${id}`;
         const raw = ""
-        execute(endPoint, raw, Method, DeleteCourseMsg, token)
+        execute(endPoint, raw, Method, RemoveBookMarkMsg, token)
     }
     if (data?.status === 'success') {
         setTimeout(() => {
@@ -34,7 +34,7 @@ function MyCourses({ myBookMarkCourses, reFetch }) {
     return (
         <div>
             <CardBody>
-                <button className='btn btn-success mb-3' onClick={() => setOpenModal(true)} >+Add a new course</button>
+                <button className='btn btn-success' onClick={() => setOpenModal(true)} >+Add new course</button>
                 {
                     myBookMarkCourses.length <= 0 ? <Empty empty="Your book  mark is empty" /> :
                         <Row>
@@ -59,7 +59,7 @@ function MyCourses({ myBookMarkCourses, reFetch }) {
                                                     </div>
                                                     <div className="d-flex justify-content-between ">
                                                         <Link to={`/course-details/${course?._id}`}><GrView />View details <BsArrowRight /> </Link>
-                                                        <div className='remove-bookmark' onClick={() => removeBookmark(course?._id)}>
+                                                        <div className='remove-bookmark' onClick={() => removeBookmark(course?.id)}>
                                                             <BsBookmarkX size={18} />Remove
                                                         </div>
                                                     </div>
@@ -80,7 +80,7 @@ function MyCourses({ myBookMarkCourses, reFetch }) {
                 ModalTitle="Add a new course"
                 cancel="cancel"
                 // This is the component name
-                CourseForm={<CourseForm reFetch={reFetch} onClose={() => setOpenModal(false)} />}
+                CourseForm={CourseForm}
             />
 
         </div>

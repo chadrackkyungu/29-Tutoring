@@ -60,13 +60,10 @@ function MyProperties({ data }) {
                                                 </div>
                                                 <div className="d-flex justify-content-between ">
                                                     <Link to={`/course-details/${course?._id}`}><GrView /> View details <BsArrowRight /> </Link>
-                                                    {/* {
+                                                    {
                                                         true ? <p className="cursor-zoom-in"> <BsBookmarks size={24} onClick={() => booMark(course?._id)} /> </p>
                                                             : <p className="cursor-zoom-in"> <FcBookmark size={28} /> </p>
-                                                    } */}
-
-                                                    {userRole !== 'student' ? null : <p className="cursor-zoom-in"> <BsBookmarks size={24} onClick={() => booMark(course?._id)} /> </p>}
-
+                                                    }
                                                 </div>
                                             </CardBody>
                                         </Card>

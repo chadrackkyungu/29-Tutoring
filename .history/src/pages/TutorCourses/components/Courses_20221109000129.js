@@ -34,7 +34,7 @@ function MyCourses({ myBookMarkCourses, reFetch }) {
     return (
         <div>
             <CardBody>
-                <button className='btn btn-success mb-3' onClick={() => setOpenModal(true)} >+Add a new course</button>
+                <button className='btn btn-success' onClick={() => setOpenModal(true)} >+Add new course</button>
                 {
                     myBookMarkCourses.length <= 0 ? <Empty empty="Your book  mark is empty" /> :
                         <Row>
@@ -80,7 +80,7 @@ function MyCourses({ myBookMarkCourses, reFetch }) {
                 ModalTitle="Add a new course"
                 cancel="cancel"
                 // This is the component name
-                CourseForm={<CourseForm reFetch={reFetch} onClose={() => setOpenModal(false)} />}
+                CourseForm={CourseForm}
             />
 
         </div>

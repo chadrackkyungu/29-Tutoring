@@ -9,7 +9,6 @@ const updateProfileMsg = "Successful updated the profile"
 const AddBookMarkMsg = "Successful add to book mark"
 const RemoveBookMarkMsg = "Successful removed "
 const CreateCourseMsg = "Successful create a course "
-const DeleteCourseMsg = "Successful deleted "
 export {
     LoginMsg,
     ForgotPasswordMsg,
@@ -21,6 +20,5 @@ export {
     updateProfileMsg,
     AddBookMarkMsg,
     RemoveBookMarkMsg,
-    CreateCourseMsg,
-    DeleteCourseMsg
+    CreateCourseMsg
 } 

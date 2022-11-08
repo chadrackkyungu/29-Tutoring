@@ -14,7 +14,7 @@ const TutorCourses = () => {
     const user = useStore1Selector(userDetails);
     const user_Id = user?.data?.data?._id;
     const token = user?.token;
-    const { data, loading, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/courses/${user_Id}/userId`, token);
+    const { data, loading, reFetch } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/bookmarks/${user_Id}/userId`, token);
 
     if (loading) return <Layout> <Loading /> </Layout>
 
@@ -25,6 +25,7 @@ const TutorCourses = () => {
                     <MetaTagComp title_sco={MyCourses} />
 
                     <Container fluid>
+                        <h2>hey</h2>
                         <MyCourse myBookMarkCourses={data} loading={loading} reFetch={reFetch} />
                     </Container>
                 </div>

@@ -80,7 +80,7 @@ function MyCourses({ myBookMarkCourses, reFetch }) {
                 ModalTitle="Add a new course"
                 cancel="cancel"
                 // This is the component name
-                CourseForm={<CourseForm reFetch={reFetch} onClose={() => setOpenModal(false)} />}
+                CourseForm={<CourseForm />}
             />
 
         </div>
