@@ -1,0 +1,46 @@
+import React from "react"
+import { Redirect } from "react-router-dom"
+import { LoginRoute, ForgotPasswordRoute, ResetPasswordRoute, VerifyEmailRoute, Dashboard, LogoutRoute, BookMarkRoute, RegisterAsRoute, CourseDetailsRoute, ProfileRoute, AccountRoute, StudentRegRoute, TutorRegRoute, TutorCourseRoute, TutorSessionRoute, SessionDetailsRoute } from "../components/RouteName"
+
+import Login from "../pages/Authentication/Login"
+import Student from "../pages/Authentication/Student"
+import Tutor from "../pages/Authentication/Tutor"
+import ForgetPwd from "../pages/Authentication/ForgetPassword"
+import ResetPassword from "../pages/Authentication/ResetPassword"
+import VerifiedEmail from "../pages/Authentication/VerifiedEmail"
+import Logout from "../pages/Authentication/Logout"
+import RegisterAs from "../pages/Authentication/RegisterAs"
+
+import Layout from '../pages/Layout';
+import UserProfile from "../pages/Account/Account"
+import Courses from "../pages/Courses/Index"
+import BookMark from "../pages/BookMark/BookMark"
+import CourseDetails from "../pages/Courses/CourseDetails"
+import TutorCourse from "../pages/TutorCourses/Index"
+import MySessions from "../pages/TutorCourses/MySessions"
+import SessionDetails from "../pages/TutorCourses/SessionDetails"
+
+const userRoutes = [
+  { path: AccountRoute, exact: true, component: Layout },
+  { path: ProfileRoute, exact: true, component: UserProfile },
+  { path: CourseDetailsRoute, exact: true, component: CourseDetails },
+  { path: Dashboard, exact: true, component: Courses },
+  { path: BookMarkRoute, exact: true, component: BookMark },
+  { path: TutorCourseRoute, exact: true, component: TutorCourse },
+  { path: TutorSessionRoute, exact: true, component: MySessions },
+  { path: SessionDetailsRoute, exact: true, component: SessionDetails },
+  { path: "*", exact: true, component: () => <Redirect to={Dashboard} /> },
+]
+
+const authRoutes = [
+  { path: LoginRoute, exact: true, component: Login },
+  { path: ForgotPasswordRoute, exact: true, component: ForgetPwd },
+  { path: StudentRegRoute, exact: true, component: Student },
+  { path: TutorRegRoute, exact: true, component: Tutor },
+  { path: ResetPasswordRoute, exact: true, component: ResetPassword },
+  { path: VerifyEmailRoute, exact: true, component: VerifiedEmail },
+  { path: LogoutRoute, exact: true, component: Logout },
+  { path: RegisterAsRoute, exact: true, component: RegisterAs },
+]
+
+export { userRoutes, authRoutes }
