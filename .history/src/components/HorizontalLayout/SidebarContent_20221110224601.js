@@ -161,13 +161,13 @@ const SidebarContent = props => {
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to="/students" className="waves-effect">
+                                            <Link to="/student" className="waves-effect">
                                                 <FaUserGraduate size={20} className="me-3" />
                                                 <span >{props.t("Students")}</span>
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to="/tutors" className="waves-effect">
+                                            <Link to="/tutor" className="waves-effect">
                                                 <FaUserTie size={20} className="me-3" />
                                                 <span >{props.t("Tutors")}</span>
                                             </Link>

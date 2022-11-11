@@ -25,5 +25,5 @@ export {
     LiveSessions,
     Request,
     Student,
-    Tutor
+    tutor
 } 

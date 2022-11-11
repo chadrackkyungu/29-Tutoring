@@ -8,10 +8,9 @@ import { Link } from "react-router-dom"
 import { withTranslation } from "react-i18next"
 import { useStore1Selector } from '../../index';
 import { userDetails } from '../../Redux/Slices/userSlice'
-import { FaUserCircle, FaUserGraduate, FaUserTie } from 'react-icons/fa';
+import { FaUserTie } from 'react-icons/fa';
 import { FcBookmark, FcClapperboard, FcEnteringHeavenAlive, FcReadingEbook } from 'react-icons/fc';
 import { MdLiveTv } from "react-icons/md"
-import { BsChatSquareQuote } from "react-icons/bs"
 
 const SidebarContent = props => {
     const ref = useRef()
@@ -155,21 +154,21 @@ const SidebarContent = props => {
                                 role === 'super-admin' || role === 'admin' ? (
                                     <>
                                         <li>
-                                            <Link to="/request" className="waves-effect">
-                                                <BsChatSquareQuote size={24} className="me-3" />
+                                            <Link to="/my-courses" className="waves-effect">
+                                                <FcBookmark size={24} className="me-3" />
                                                 <span >{props.t("Request")}</span>
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to="/students" className="waves-effect">
-                                                <FaUserGraduate size={20} className="me-3" />
-                                                <span >{props.t("Students")}</span>
+                                            <Link to="/live-sessions" className="waves-effect">
+                                                <MdLiveTv size={24} className="me-3" />
+                                                <span >{props.t("Tutors")}</span>
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to="/tutors" className="waves-effect">
-                                                <FaUserTie size={20} className="me-3" />
-                                                <span >{props.t("Tutors")}</span>
+                                            <Link to="/live-sessions" className="waves-effect">
+                                                <MdLiveTv size={24} className="me-3" />
+                                                <span >{props.t("Students")}</span>
                                             </Link>
                                         </li>
                                     </>
@@ -178,7 +177,7 @@ const SidebarContent = props => {
 
                             <li>
                                 <Link to="/profile" className="waves-effect">
-                                    <FaUserCircle size={18} className="me-3" />
+                                    <FaUserTie size={18} className="me-3" />
                                     <span >{props.t("My profile")}</span>
                                 </Link>
                             </li>

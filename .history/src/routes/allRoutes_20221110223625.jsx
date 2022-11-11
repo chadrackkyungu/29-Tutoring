@@ -1,6 +1,6 @@
 import React from "react"
 import { Redirect } from "react-router-dom"
-import { LoginRoute, ForgotPasswordRoute, ResetPasswordRoute, VerifyEmailRoute, Dashboard, LogoutRoute, BookMarkRoute, RegisterAsRoute, CourseDetailsRoute, ProfileRoute, AccountRoute, StudentRegRoute, TutorRegRoute, TutorCourseRoute, TutorSessionRoute, SessionDetailsRoute, LiveSessionRoute, LiveSessionDetailsRoute, RequestRoute, StudentRoute, TutorRoute } from "../components/RouteName"
+import { LoginRoute, ForgotPasswordRoute, ResetPasswordRoute, VerifyEmailRoute, Dashboard, LogoutRoute, BookMarkRoute, RegisterAsRoute, CourseDetailsRoute, ProfileRoute, AccountRoute, StudentRegRoute, TutorRegRoute, TutorCourseRoute, TutorSessionRoute, SessionDetailsRoute, LiveSessionRoute, LiveSessionDetailsRoute, RequestRoute } from "../components/RouteName"
 
 import Login from "../pages/Authentication/Login"
 import Student from "../pages/Authentication/Student"
@@ -22,8 +22,6 @@ import SessionDetails from "../pages/TutorCourses/SessionDetails"
 import LiveSessions from "../pages/Sessions/Index"
 import SessionDetailStudent from "../pages/Sessions/SessionDetailStudent"
 import TutorRequest from "../pages/Admin/TutorRequest"
-import Students from "pages/Admin/Students"
-import Tutors from "pages/Admin/Tutors"
 
 const userRoutes = [
   { path: AccountRoute, exact: true, component: Layout },
@@ -37,8 +35,6 @@ const userRoutes = [
   { path: LiveSessionRoute, exact: true, component: LiveSessions },
   { path: LiveSessionDetailsRoute, exact: true, component: SessionDetailStudent },
   { path: RequestRoute, exact: true, component: TutorRequest },
-  { path: StudentRoute, exact: true, component: Students },
-  { path: TutorRoute, exact: true, component: Tutors },
   { path: "*", exact: true, component: () => <Redirect to={Dashboard} /> },
 ]
 

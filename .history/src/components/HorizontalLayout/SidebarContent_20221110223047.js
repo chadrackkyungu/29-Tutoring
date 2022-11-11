@@ -155,19 +155,19 @@ const SidebarContent = props => {
                                 role === 'super-admin' || role === 'admin' ? (
                                     <>
                                         <li>
-                                            <Link to="/request" className="waves-effect">
+                                            <Link to="/my-courses" className="waves-effect">
                                                 <BsChatSquareQuote size={24} className="me-3" />
                                                 <span >{props.t("Request")}</span>
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to="/students" className="waves-effect">
+                                            <Link to="/live-sessions" className="waves-effect">
                                                 <FaUserGraduate size={20} className="me-3" />
                                                 <span >{props.t("Students")}</span>
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to="/tutors" className="waves-effect">
+                                            <Link to="/live-sessions" className="waves-effect">
                                                 <FaUserTie size={20} className="me-3" />
                                                 <span >{props.t("Tutors")}</span>
                                             </Link>

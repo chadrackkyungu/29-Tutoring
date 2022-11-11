@@ -9,8 +9,6 @@ const MyCourses = "Tutoring | My Courses "
 const MySessions = "Tutoring | My sessions "
 const LiveSessions = "Tutoring | Live sessions "
 const Request = "Tutoring | Request "
-const Student = "Tutoring | Student "
-const Tutor = "Tutoring | Tutor "
 
 export {
     LoginPage,
@@ -23,7 +21,5 @@ export {
     MyCourses,
     MySessions,
     LiveSessions,
-    Request,
-    Student,
-    Tutor
+    Request
 } 

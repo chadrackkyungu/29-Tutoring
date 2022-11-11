@@ -16,9 +16,7 @@ const TutorSessionRoute = "/my-sessions"
 const SessionDetailsRoute = "/session/:id"
 const LiveSessionRoute = "/live-sessions"
 const LiveSessionDetailsRoute = "/live-session/:id"
-const RequestRoute = "/request"
-const StudentRoute = "/students"
-const TutorRoute = "/tutors"
+const RequestRoute = "/request'
 
 
 export {
@@ -40,7 +38,5 @@ export {
     SessionDetailsRoute,
     LiveSessionRoute,
     LiveSessionDetailsRoute,
-    RequestRoute,
-    StudentRoute,
-    TutorRoute
+    RequestRoute
 } 
