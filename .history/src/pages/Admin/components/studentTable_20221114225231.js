@@ -1,35 +1,32 @@
-import Empty from 'components/Empty';
-import Loading from 'components/Loading';
-import { TutorCourseRoute } from 'components/RouteName';
 import useFetch from 'hooks/useFecth';
 import { useStore1Selector } from 'index';
-import Layout from 'pages/Layout';
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
-import { Card, CardBody, Spinner, Badge } from "reactstrap";
+import React, { useState } from 'react'
+import { Card, CardBody, Badge } from "reactstrap";
 import { userDetails } from 'Redux/Slices/userSlice';
 import SmallModal from './../../../SmallModal';
 import DeleteFormFunc from './DeleteFormFunc';
-import SuspendFormFunc from './SuspendFormFunc';
 import UnSuspendFormFunc from './UnSuspendFormFunc';
+import SuspendFormFunc from './SuspendFormFunc';
+import Loading from 'components/Loading';
+import Layout from 'pages/Layout';
+import Empty from 'components/Empty';
 
-function TutorTable() {
+function StudentTable() {
 
-    const user = useStore1Selector(userDetails);
+    const [secId, setSecId] = useState();
     const [openModal, setOpenModal] = useState(false);
     const [Suspend, setSuspend] = useState(false);
     const [UnSuspend, setUnSuspend] = useState(false);
+    const user = useStore1Selector(userDetails);
     const token = user.token;
-    const { data, reFetch, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/users/tutors`, token);
-    const [secId, setSecId] = useState();
-
+    const { data, reFetch, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/users/students`, token);
     if (loading) return <Layout> <Loading /> </Layout>
 
     return (
         <CardBody>
-            <h4>Tutors</h4>
+            <h4>Students</h4>
             {
-                data.length <= 0 ? <Empty empty="You have no tutors yet" /> :
+                data.length <= 0 ? <Empty empty="You do not have any request" /> :
                     <Card className="mt-3">
                         <div className="table-responsive p-4">
                             <table className="table align-middle table-nowrap mb-0">
@@ -46,7 +43,6 @@ function TutorTable() {
                                         <th className="align-middle">Phone Number</th>
                                         <th className="align-middle">Email</th>
                                         <th className="align-middle">Status</th>
-                                        <th className="align-middle">View</th>
                                         <th className="align-middle">Action</th>
                                         <th className="align-middle">Delete</th>
                                     </tr>
@@ -67,12 +63,17 @@ function TutorTable() {
                                                     <td>{tutorReq?.phoneNumber}</td>
                                                     <td>{tutorReq?.email}</td>
                                                     <td>{tutorReq?.status ? "Active" : "Suspended"}</td>
-
-                                                    <td>
-                                                        <Link to={`/tutor-courses/${tutorReq?._id}`}>
-                                                            <Badge className="bg-primary cursor-pointer p-2"> View tutor courses </Badge>
-                                                        </Link>
-                                                    </td>
+                                                    {/* 
+                                        <td>
+                                            <Link to="/"
+                                                onClick={() => {
+                                                    setSecId(tutorReq?._id)
+                                                }}>
+                                                <Badge className="bg-primary cursor-pointer p-2">
+                                                    View
+                                                </Badge>
+                                            </Link>
+                                        </td> */}
 
                                                     {
                                                         tutorReq?.status ? (
@@ -114,7 +115,7 @@ function TutorTable() {
             <SmallModal
                 open={openModal}
                 onClose={() => setOpenModal(false)}
-                ModalTitle="Are you sure you want to delete this Tutor ?"
+                ModalTitle="Are you sure you want to delete this student ?"
                 cancel="No"
                 CourseForm={<DeleteFormFunc reFetch={reFetch} UserID={secId} onClose={() => setOpenModal(false)} />}
             />
@@ -122,7 +123,7 @@ function TutorTable() {
             <SmallModal
                 open={Suspend}
                 onClose={() => setSuspend(false)}
-                ModalTitle="Are you sure you want to suspend this tutor ?"
+                ModalTitle="Are you sure you want to suspend this student ?"
                 cancel="No"
                 CourseForm={<SuspendFormFunc reFetch={reFetch} UserID={secId} onClose={() => setSuspend(false)} />}
             />
@@ -130,7 +131,7 @@ function TutorTable() {
             <SmallModal
                 open={UnSuspend}
                 onClose={() => setUnSuspend(false)}
-                ModalTitle="Are you sure you want to unsuspend this tutor ?"
+                ModalTitle="Are you sure you want to unsuspend this student ?"
                 cancel="No"
                 CourseForm={<UnSuspendFormFunc reFetch={reFetch} UserID={secId} onClose={() => setUnSuspend(false)} />}
             />
@@ -139,4 +140,4 @@ function TutorTable() {
     )
 }
 
-export default TutorTable
+export default StudentTable

@@ -70,7 +70,7 @@ function TutorTable() {
 
                                                     <td>
                                                         <Link to={`/tutor-courses/${tutorReq?._id}`}>
-                                                            <Badge className="bg-primary cursor-pointer p-2"> View tutor courses </Badge>
+                                                            <Badge className="bg-primary cursor-pointer p-2"> View </Badge>
                                                         </Link>
                                                     </td>
 

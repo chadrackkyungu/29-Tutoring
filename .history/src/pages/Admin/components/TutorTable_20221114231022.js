@@ -69,8 +69,8 @@ function TutorTable() {
                                                     <td>{tutorReq?.status ? "Active" : "Suspended"}</td>
 
                                                     <td>
-                                                        <Link to={`/tutor-courses/${tutorReq?._id}`}>
-                                                            <Badge className="bg-primary cursor-pointer p-2"> View tutor courses </Badge>
+                                                        <Link to={`/my-courses`}>
+                                                            <Badge className="bg-primary cursor-pointer p-2"> View </Badge>
                                                         </Link>
                                                     </td>
 

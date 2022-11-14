@@ -1,35 +1,32 @@
 import Empty from 'components/Empty';
 import Loading from 'components/Loading';
-import { TutorCourseRoute } from 'components/RouteName';
 import useFetch from 'hooks/useFecth';
 import { useStore1Selector } from 'index';
 import Layout from 'pages/Layout';
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
 import { Card, CardBody, Spinner, Badge } from "reactstrap";
 import { userDetails } from 'Redux/Slices/userSlice';
 import SmallModal from './../../../SmallModal';
+import ApproveFormFunc from './ApproveFormFunc';
+import DeclineFormFunc from './DeclineFormFunc';
 import DeleteFormFunc from './DeleteFormFunc';
-import SuspendFormFunc from './SuspendFormFunc';
-import UnSuspendFormFunc from './UnSuspendFormFunc';
 
-function TutorTable() {
+function RequestTable() {
 
-    const user = useStore1Selector(userDetails);
-    const [openModal, setOpenModal] = useState(false);
-    const [Suspend, setSuspend] = useState(false);
-    const [UnSuspend, setUnSuspend] = useState(false);
-    const token = user.token;
-    const { data, reFetch, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/users/tutors`, token);
     const [secId, setSecId] = useState();
-
+    const [openModal, setOpenModal] = useState(false);
+    const [approve, setApprove] = useState(false);
+    const [decline, setDecline] = useState(false);
+    const user = useStore1Selector(userDetails);
+    const token = user.token;
+    const { data, reFetch, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/users/non-verify-emails`, token);
     if (loading) return <Layout> <Loading /> </Layout>
 
     return (
         <CardBody>
-            <h4>Tutors</h4>
+            <h4>Requests</h4>
             {
-                data.length <= 0 ? <Empty empty="You have no tutors yet" /> :
+                data.length <= 0 ? <Empty empty="Your have course yet" /> :
                     <Card className="mt-3">
                         <div className="table-responsive p-4">
                             <table className="table align-middle table-nowrap mb-0">
@@ -45,9 +42,8 @@ function TutorTable() {
                                         <th className="align-middle">Last Name</th>
                                         <th className="align-middle">Phone Number</th>
                                         <th className="align-middle">Email</th>
-                                        <th className="align-middle">Status</th>
-                                        <th className="align-middle">View</th>
-                                        <th className="align-middle">Action</th>
+                                        <th className="align-middle">Approved</th>
+                                        <th className="align-middle">Decline</th>
                                         <th className="align-middle">Delete</th>
                                     </tr>
                                 </thead>
@@ -66,33 +62,22 @@ function TutorTable() {
                                                     <td>{tutorReq?.lastName}</td>
                                                     <td>{tutorReq?.phoneNumber}</td>
                                                     <td>{tutorReq?.email}</td>
-                                                    <td>{tutorReq?.status ? "Active" : "Suspended"}</td>
 
                                                     <td>
-                                                        <Link to={`/tutor-courses/${tutorReq?._id}`}>
-                                                            <Badge className="bg-primary cursor-pointer p-2"> View tutor courses </Badge>
-                                                        </Link>
+                                                        <Badge className="bg-success cursor-pointer p-2"
+                                                            onClick={() => {
+                                                                setApprove(true)
+                                                                setSecId(tutorReq?._id)
+                                                            }}> Approved </Badge>
                                                     </td>
 
-                                                    {
-                                                        tutorReq?.status ? (
-                                                            <td>
-                                                                <Badge className="bg-info cursor-pointer p-2"
-                                                                    onClick={() => {
-                                                                        setSuspend(true)
-                                                                        setSecId(tutorReq?._id)
-                                                                    }}> Suspend </Badge>
-                                                            </td>
-                                                        ) : (
-                                                            <td>
-                                                                <Badge className="bg-dark cursor-pointer p-2"
-                                                                    onClick={() => {
-                                                                        setUnSuspend(true)
-                                                                        setSecId(tutorReq?._id)
-                                                                    }}> Unsuspend </Badge>
-                                                            </td>
-                                                        )
-                                                    }
+                                                    <td>
+                                                        <Badge className="bg-info cursor-pointer p-2"
+                                                            onClick={() => {
+                                                                setDecline(true)
+                                                                setSecId(tutorReq?._id)
+                                                            }}> decline </Badge>
+                                                    </td>
 
                                                     <td>
                                                         <Badge className="bg-danger cursor-pointer p-2"
@@ -112,31 +97,29 @@ function TutorTable() {
             }
 
             <SmallModal
+                open={approve}
+                onClose={() => setApprove(false)}
+                ModalTitle="Are you sure you want to approved this tutor ?"
+                cancel="No"
+                CourseForm={<ApproveFormFunc reFetch={reFetch} UserID={secId} onClose={() => setApprove(false)} />}
+            />
+            <SmallModal
+                open={decline}
+                onClose={() => setDecline(false)}
+                ModalTitle="Are you sure you want to decline this tutor?"
+                cancel="No"
+                CourseForm={<DeclineFormFunc reFetch={reFetch} UserID={secId} onClose={() => setDecline(false)} />}
+            />
+            <SmallModal
                 open={openModal}
                 onClose={() => setOpenModal(false)}
-                ModalTitle="Are you sure you want to delete this Tutor ?"
+                ModalTitle="Are you sure you want to delete this user ?"
                 cancel="No"
                 CourseForm={<DeleteFormFunc reFetch={reFetch} UserID={secId} onClose={() => setOpenModal(false)} />}
-            />
-
-            <SmallModal
-                open={Suspend}
-                onClose={() => setSuspend(false)}
-                ModalTitle="Are you sure you want to suspend this tutor ?"
-                cancel="No"
-                CourseForm={<SuspendFormFunc reFetch={reFetch} UserID={secId} onClose={() => setSuspend(false)} />}
-            />
-
-            <SmallModal
-                open={UnSuspend}
-                onClose={() => setUnSuspend(false)}
-                ModalTitle="Are you sure you want to unsuspend this tutor ?"
-                cancel="No"
-                CourseForm={<UnSuspendFormFunc reFetch={reFetch} UserID={secId} onClose={() => setUnSuspend(false)} />}
             />
 
         </CardBody>
     )
 }
 
-export default TutorTable
+export default RequestTable

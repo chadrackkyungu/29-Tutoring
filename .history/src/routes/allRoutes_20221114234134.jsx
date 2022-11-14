@@ -1,6 +1,6 @@
 import React from "react"
 import { Redirect } from "react-router-dom"
-import { LoginRoute, ForgotPasswordRoute, ResetPasswordRoute, VerifyEmailRoute, Dashboard, LogoutRoute, BookMarkRoute, RegisterAsRoute, CourseDetailsRoute, ProfileRoute, AccountRoute, StudentRegRoute, TutorRegRoute, TutorCourseRoute, TutorSessionRoute, SessionDetailsRoute, LiveSessionRoute, LiveSessionDetailsRoute, RequestRoute, StudentRoute, TutorRoute, TutorCourseRouteById } from "../components/RouteName"
+import { LoginRoute, ForgotPasswordRoute, ResetPasswordRoute, VerifyEmailRoute, Dashboard, LogoutRoute, BookMarkRoute, RegisterAsRoute, CourseDetailsRoute, ProfileRoute, AccountRoute, StudentRegRoute, TutorRegRoute, TutorCourseRoute, TutorSessionRoute, SessionDetailsRoute, LiveSessionRoute, LiveSessionDetailsRoute, RequestRoute, StudentRoute, TutorRoute } from "../components/RouteName"
 
 import Login from "../pages/Authentication/Login"
 import Student from "../pages/Authentication/Student"
