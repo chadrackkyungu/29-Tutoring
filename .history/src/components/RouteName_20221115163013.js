@@ -20,7 +20,7 @@ const LiveSessionDetailsRoute = "/live-session/:id"
 const RequestRoute = "/request"
 const StudentRoute = "/students"
 const TutorRoute = "/tutors"
-const TutorGoLiveRoute = "/live-session/:id/tutor"
+const TutorGoLiveRoute = "/live-session/:id"
 const StudentsGoLiveRoute = "/join-session/:id"
 
 export {
