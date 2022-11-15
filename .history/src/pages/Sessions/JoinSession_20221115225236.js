@@ -8,6 +8,7 @@ import useFetch from './../../hooks/useFecth';
 
 const JoinEvent = () => {
     const { id } = useParams();
+
     const userDet = useStore1Selector(userDetails);
     const token = userDet?.token
     const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/sessions/${id}`, token);

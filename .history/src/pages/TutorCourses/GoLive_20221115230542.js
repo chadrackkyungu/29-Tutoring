@@ -12,6 +12,9 @@ export default function JoinEvent() {
     const token = user?.token
     const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/sessions/${id}`, token);
 
+    console.log(user)
+    console.log(data)
+
     useEffect(() => {
         const apiKey = process.env.REACT_APP_vsdk;
         const meetingId = `Live-session ${id}`;
@@ -75,13 +78,13 @@ export default function JoinEvent() {
 
             joinScreen: {
                 visible: true,
-                title: `Session Title : ${data?.sessionTitle}`,
+                title: "Session",
             },
 
             leftScreen: {
                 actionButton: {
                     label: "Tutoring", // action button label
-                    href: process.env.REACT_APP_SHARE_LINK, // action button href
+                    href: "https://event.showbay24.com/", // action button href
                 },
             },
             notificationSoundEnabled: true,

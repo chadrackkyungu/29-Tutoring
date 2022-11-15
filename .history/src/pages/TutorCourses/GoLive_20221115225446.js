@@ -3,19 +3,18 @@ import { VideoSDKMeeting } from "@videosdk.live/rtc-js-prebuilt";
 import { useParams } from "react-router-dom";
 import { useStore1Selector } from "index";
 import { userDetails } from './../../Redux/Slices/userSlice';
-import useFetch from './../../hooks/useFecth';
 
 
 export default function JoinEvent() {
     const { id } = useParams();
     const user = useStore1Selector(userDetails);
-    const token = user?.token
-    const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/sessions/${id}`, token);
+
+    console.log(user)
 
     useEffect(() => {
         const apiKey = process.env.REACT_APP_vsdk;
         const meetingId = `Live-session ${id}`;
-        const name = `${data?.Tutor?.firstName}   ${data?.Tutor?.lastName}`;
+        const name = `${user.Name}`;
 
         const config = {
             name: name,
@@ -23,7 +22,7 @@ export default function JoinEvent() {
             apiKey: apiKey,
             region: "sg001",
             containerId: null,
-            redirectOnLeave: process.env.REACT_APP_REDIRECT_TUTOR_AFTER_MEETING,
+            redirectOnLeave: "https://event.showbay24.com/get-started",
             micEnabled: true,
             webcamEnabled: true,
             participantCanToggleSelfWebcam: true,
@@ -53,8 +52,8 @@ export default function JoinEvent() {
 
             branding: {
                 enabled: true,
-                logoURL: "https://www.logoarena.com/contestimages/public_new/2707/2252_1367263099_rxtutoring4.jpg",
-                name: data?.sessionTitle,
+                logoURL: "https://app.showbay24.com/Logo/Showbay24.png",
+                name: "Conference",
                 poweredBy: false,
             },
 
@@ -75,13 +74,13 @@ export default function JoinEvent() {
 
             joinScreen: {
                 visible: true,
-                title: `Session Title : ${data?.sessionTitle}`,
+                title: "Session",
             },
 
             leftScreen: {
                 actionButton: {
                     label: "Tutoring", // action button label
-                    href: process.env.REACT_APP_SHARE_LINK, // action button href
+                    href: "https://event.showbay24.com/", // action button href
                 },
             },
             notificationSoundEnabled: true,

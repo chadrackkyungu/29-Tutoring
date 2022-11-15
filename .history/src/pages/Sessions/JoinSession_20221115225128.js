@@ -8,9 +8,13 @@ import useFetch from './../../hooks/useFecth';
 
 const JoinEvent = () => {
     const { id } = useParams();
+
     const userDet = useStore1Selector(userDetails);
     const token = userDet?.token
     const { data, loading } = useFetch(`${process.env.REACT_APP_BACKEND_URL}/sessions/${id}`, token);
+
+    console.log(data)
+    console.log(userDet?.data?.data?.firstName)
 
     useEffect(() => {
         const apiKey = process.env.REACT_APP_vsdk;
@@ -46,26 +50,27 @@ const JoinEvent = () => {
                 ],
             },
             permissions: {
-                askToJoin: false,
-                toggleParticipantMic: true,
-                toggleParticipantWebcam: true,
-                removeParticipant: false,
-                endMeeting: false,
-                drawOnWhiteboard: false,
-                toggleWhiteboard: false,
-                toggleRecording: false,
+                askToJoin: false, // Ask joined participants for entry in meeting
+                toggleParticipantMic: true, // Can toggle other participant's mic
+                toggleParticipantWebcam: true, // Can toggle other participant's webcam
+                removeParticipant: false, // Remove other participant from meeting
+                endMeeting: false, // End meeting for all participant
+                drawOnWhiteboard: false, // Can Draw on whiteboard
+                toggleWhiteboard: false, // Can toggle whiteboard
+                toggleRecording: false, // Can toggle recording
             },
             joinScreen: {
                 visible: true, // Show the join screen ?
-                title: `Session Title : ${data?.sessionTitle}`
+                title: `Session Title : ${data?.sessionTitle}` // Meeting title
             },
             pin: {
-                allowed: true,
+                allowed: true, // participant can pin any participant in meeting
                 layout: "GRID", // meeting layout - GRID | SPOTLIGHT | SIDEBAR
             },
             leftScreen: {
                 actionButton: {
                     label: "Tutoring",
+                    // href: "https://videosdk.live/", // action button href
                 },
             },
         };
