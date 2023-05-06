@@ -1,8 +1,8 @@
 {
-    "name": "Security-Check-in-and-out",
+    "name": "Tutoring",
     "version": "0.1.0",
     "private": true,
-    "proxy": "https://security-check-in.herokuapp.com/",
+    "proxy": "http://localhost:5500/",
     "dependencies": {
         "-": "^0.0.1",
         "@emotion/react": "^11.9.0",
